@@ -1,0 +1,5 @@
+### CloudEnvent形式のリクエストBody
+curl -X POST -H 'Content-Type: application/json' -H 'ce-id: 1234' -H 'ce-source: my-project/my-topic' -H 'ce-specversion: 1.0' -H 'ce-type: my-event' -H 'ce-time: 2023-03-19T00:00:00.000Z' -d '{"subscription": "projects/my-project/subscriptions/my-sub", "message": {"messageId": "2070443601311540", "data": {"event": "REQUESTED", "eventData": {"ID": "9999", "Title" :"Hello!"}}, "attributes": {"attr": "attr1-value"}}}' http://localhost:8080/ 
+
+### Pubsubのデータmessage.dataをbase64エンコードした場合のリクエストBody
+curl -X POST -H 'Content-Type: application/json' -H 'ce-id: 1234' -H 'ce-source: my-project/my-topic' -H 'ce-specversion: 1.0' -H 'ce-type: my-event' -H 'ce-time: 2023-03-19T00:00:00.000Z' -d '{"subscription": "projects/my-project/subscriptions/my-sub", "message": {"messageId": "2070443601311540", "data": "eyJldmVudCI6ICJSRVFVRVNURUQiLCAiZXZlbnREYXRhIjogeyJJRCI6ICI5OTk5IiwgIlRpdGxlIiA6IkhlbGxvISJ9fQo=", "attributes": {"attr": "attr1-value"}}}' http://localhost:8080/ 
